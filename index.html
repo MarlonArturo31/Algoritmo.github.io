@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Algoritmo Congruencial Multiplicativo</title>
+</head>
+<body>
+    <style>
+        body{
+            background-image: url('b.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        </style>
+
+    <center><h1>Algoritmo Congruencial Multiplicativo</h1></center>
+    <label for="semilla">Semilla (X0):</label>
+    <input type="number" id="semilla">
+    <br>
+    <br>
+    <label for="constante">Constante multiplicativa (a):</label>
+    <input type="number" id="constante">
+    <br>
+    <br>
+    <label for="modulo">M&oacutedulo (m):</label>
+    <input type="number" id="modulo">
+    <br>
+    <br>
+    <label for="cantidad">Cantidad de valores (n):</label>
+    <input type="number" id="cantidad">
+    <br>
+    <br>
+    <button onclick="generarValores()">Generar Valores</button>
+    <br>
+    <br>
+    <h2>Valores generados:</h2>
+    <ul id="valoresGenerados"></ul>
+    <script>
+    function generarValores() {
+    var semilla = parseInt(document.getElementById("semilla").value);
+    var constante = parseInt(document.getElementById("constante").value);
+    var modulo = parseInt(document.getElementById("modulo").value);
+    var cantidad = parseInt(document.getElementById("cantidad").value);
+    
+    var valoresGenerados = document.getElementById("valoresGenerados");
+    valoresGenerados.innerHTML = ""; 
+    
+    for (var i = 0; i < cantidad; i++) {
+        semilla = (constante * semilla) % modulo;
+        
+        var li = document.createElement("li");
+        li.appendChild(document.createTextNode("x" + (i + 1) + ": " + semilla));
+        valoresGenerados.appendChild(li);
+    }
+}
+    </script>
+</body>
+</html>
+
+
